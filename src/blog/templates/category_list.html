@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+
+<h1>Categories</h1>
+
+{% for c in categories %}
+    <div style="margin-bottom: 15px;">
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.description }}</p>
+        <p><strong>Icon:</strong> {{ c.icon }}</p>
+    </div>
+{% empty %}
+    <p>No categories.</p>
+{% endfor %}
+
+</body>
+</html>

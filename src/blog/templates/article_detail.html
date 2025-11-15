@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+</head>
+<body>
+
+<h1>{{ article.title }}</h1>
+
+<p><strong>Author:</strong> {{ article.author }}</p>
+<p><strong>Published:</strong> {{ article.publication_date }}</p>
+
+{% if article.image %}
+    <img src="{{ article.image.url }}" width="400">
+{% endif %}
+
+<p>{{ article.text }}</p>
+
+<hr>
+
+<h2>Comments</h2>
+
+{% for c in comments %}
+    <div style="margin-bottom: 15px;">
+        <p><strong>{{ c.author }}</strong> — {{ c.publication_date }}</p>
+        <p>{{ c.text }}</p>
+    </div>
+{% empty %}
+    <p>No comments yet.</p>
+{% endfor %}
+
+</body>
+</html>

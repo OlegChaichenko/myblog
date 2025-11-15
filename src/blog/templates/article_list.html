@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Articles</title>
+</head>
+<body>
+
+<h1>All Articles</h1>
+
+{% for a in articles %}
+    <div style="margin-bottom: 25px;">
+        <h2>{{ a.title }}</h2>
+        <p><strong>Author:</strong> {{ a.author }}</p>
+        <p>{{ a.publication_date }}</p>
+
+        {% if a.image %}
+            <img src="{{ a.image.url }}" width="250">
+        {% endif %}
+
+        <p>{{ a.text|truncatechars:150 }}</p>
+
+        <a href="{% url 'article_detail' a.id %}">Read →</a>
+    </div>
+{% empty %}
+    <p>No articles found.</p>
+{% endfor %}
+
+</body>
+</html>
